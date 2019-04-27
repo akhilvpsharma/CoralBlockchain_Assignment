@@ -8,7 +8,11 @@ import
 
 func SaveService(webForm WebForm) (string, string){
 	fmt.Println("Saving...")
-	db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:3306)/db_intern")
+	fmt.Printf(webForm.UserName)
+	fmt.Printf(webForm.EmailID)
+	fmt.Printf(webForm.PhoneNumber)
+	fmt.Printf(webForm.Password)
+	db, err := sql.Open("mysql", "demouser:demopassword@tcp(127.0.0.1:3306)/db_intern")
 	if err != nil {
         panic(err.Error())
 	}
@@ -53,8 +57,8 @@ func SaveService(webForm WebForm) (string, string){
 }
 
 func SearchService(emailId string) (WebForm,string, string, error){
-	fmt.Println("Searching...")
-	db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:3306)/db_intern")
+	fmt.Println("Searching...", emailId)
+	db, err := sql.Open("mysql", "demouser:demopassword@tcp(127.0.0.1:3306)/db_intern")
     
     if err != nil {
         panic(err.Error())
@@ -79,8 +83,8 @@ func SearchService(emailId string) (WebForm,string, string, error){
 }
 
 func DeleteService(emailId string) (string, string, error){
-	fmt.Println("Deleting...")
-	db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:3306)/db_intern")
+	fmt.Println("Deleting...", emailId)
+	db, err := sql.Open("mysql", "demouser:demopassword@tcp(127.0.0.1:3306)/db_intern")
     if err != nil {
         panic(err.Error())
 	}

@@ -10,12 +10,10 @@ import (
 func Serve() {
 
 	router := mux.NewRouter()
-
-	//objectData CRUD APIs
+	
 	router.HandleFunc("/save", SaveController).Methods("POST")
-	// router.HandleFunc("/update", app.ReadObjectDataHandler).Methods("GET").Queries("objectGUID", "{objectGUID}").Queries("orgId", "{orgId}")
 	router.HandleFunc("/search/{emailId}", SearchController).Methods("GET")
-	router.HandleFunc("/delete/{emailId}", DeleteController).Methods("DELETE")
+	router.HandleFunc("/delete/{emailId}", DeleteController).Methods("GET")
 	
 	fmt.Println("Listening on http://localhost:8000/")
 	log.Fatal(http.ListenAndServe(":8000", router))

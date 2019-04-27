@@ -56,7 +56,7 @@ func SaveController(w http.ResponseWriter, r *http.Request){
 		w.Write(payload)
 		return
 }
-//DeleteOrgController calls DeleteOrg in Blockchain Package to Delete Existing Organization
+
 func SearchController(w http.ResponseWriter, r *http.Request) {
 
 	// Setting return type

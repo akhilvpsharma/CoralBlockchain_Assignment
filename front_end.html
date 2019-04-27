@@ -1,0 +1,100 @@
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<body>
+    <div>
+        <fieldset>
+                <legend>Personal Information</legend>
+                Email id:<br><input type="email" id="emailId"><br>
+                User Name:<br><input type="text" id="userName"><br>
+                Password:<br><input type="password" id="password"><br>
+                Phone Number:<br><input type="text" id="phoneNumber"><br>
+                <br><button type="submit" onClick="post()">SAVE</button>
+        </fieldset>
+    </div>
+    <br>
+    <div> 
+            <fieldset>
+                    <legend>Search Via Email</legend>
+        <input type="email" id="search_email">
+        <button type="submit" onClick="btnsearch()">SEARCH</button>
+            </fieldset>
+    </div>
+    <br>
+    <div> 
+            <fieldset>
+                    <legend>Delete Via Email</legend>
+        <input type="email" id="delete_email">
+        <button type="submit" onClick="btndelete()">DELETE</button>
+            </fieldset>
+    </div>
+
+    <div id="result">
+        
+    </div>
+         
+<script>
+    
+function post(){
+    var email = document.getElementById("emailId").value;
+    var userName = document.getElementById("userName").value;
+    var password = document.getElementById("password").value;
+    var phoneNumber = document.getElementById("phoneNumber").value;
+	var x = '{"userName":"'+userName+'","password":"'+password+'","emailId":"'+email+'","phoneNumber":"'+phoneNumber+'"}';
+
+    $.ajax({
+                url: "http://localhost:8000/save",
+                type: "POST",
+                dataType: "json",
+                success: function (data, status, xhr) {
+                    //alert(JSON.stringify(response.status));
+                    console.log(status);
+                    console.log(data);
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    alert("error"+errorMessage);
+                }
+            });
+    }
+       
+function btnsearch() {
+       var email = document.getElementById("search_email").value;
+        $.ajax({
+            url: "http://localhost:8000/search/"+email,
+            //type: "GET",
+            dataType: 'text',
+            //crossDomain: true,
+            success: function (data, status, xhr) {
+                alert(JSON.stringify(response.status));
+                console.log(status);
+                console.log(data);
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                
+                alert("error"+errorMessage);
+            }
+            
+        });
+}
+
+
+
+function btndelete() {
+       var email = document.getElementById("delete_email").value;
+        $.ajax({
+            url: "http://localhost:8000/delete/"+email,
+            dataType: 'jsonp',
+            //type: "DELETE",
+            //crossDomain: true,
+            success: function (response,status) {
+                alert(JSON.stringify(response));
+                console.log(response );
+            },
+            error: function (xhr, status) {
+                alert("error");
+            }
+        });
+}
+</script>
+</body>
+</html>
