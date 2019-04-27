@@ -1,9 +1,9 @@
 # CoralBlockchain_Assignment
-OS Used: Ubuntu 16.04
-Backend Language: Golang
-Database: MySQL
-FrontEnd: HTML
-WebService: REST APIs
+OS Used: Ubuntu 16.04,
+Backend Language: Golang,
+Database: MySQL,
+FrontEnd: HTML, Ajax,
+WebService: REST APIs.
 
 Functionalities Implemented:
 1) Insert API: Whenever this POST API is hit, the database is searched for the given email-id, since email-id is the primary key. If such a record exists, it is updated, but if not, a new record is created. The current date-time info is added in the date time field of the record.
