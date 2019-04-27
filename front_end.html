@@ -43,18 +43,19 @@ function post(){
 	var x = '{"userName":"'+userName+'","password":"'+password+'","emailId":"'+email+'","phoneNumber":"'+phoneNumber+'"}';
 
     $.ajax({
-                url: "http://localhost:8000/save",
-                type: "POST",
-                dataType: "json",
-                success: function (data, status, xhr) {
-                    //alert(JSON.stringify(response.status));
-                    console.log(status);
-                    console.log(data);
-                },
-                error: function (jqXhr, textStatus, errorMessage) {
-                    alert("error"+errorMessage);
-                }
-            });
+        url: "http://localhost:8000/save",
+        type: "POST",
+        data: x,
+        dataType: "json",
+        success: function (data, status, xhr) {
+            alert(JSON.stringify(response.status));
+            console.log(status);
+            console.log(data);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            console.log(errorMessage);
+        }
+    });
     }
        
 function btnsearch() {
@@ -76,8 +77,6 @@ function btnsearch() {
             
         });
 }
-
-
 
 function btndelete() {
        var email = document.getElementById("delete_email").value;
